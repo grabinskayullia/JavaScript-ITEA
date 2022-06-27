@@ -1,0 +1,182 @@
+1.	Создать функцию calculate(a, b, sign), где a и b — два числа, sign — знак арифметической операции.
+Функция должна расчитывать результат операции, исходя из переданного ей знака. 
+Функция должна проверять корректность введенных чисел и знака операции.
+Все аргументы для функции принять от пользователя.
+    
+
+var firstNumber = +prompt('Введите первое число: ');
+var secondNumber = +prompt('Введите друге число: ');
+var signs = prompt('Введите знак арифметической операции: ');
+var result;
+
+
+function add(a, b) {
+    return a + b;
+}
+
+function sub(a, b) {           
+    return a - b;
+}
+
+function mul(a, b) {
+    return a * b;
+}
+
+function div(a, b) {
+    return a / b;
+}
+
+        
+switch (signs) {
+    case "+":
+        result = add(firstNumber, secondNumber);
+        break;
+    case "-":
+        result = sub(firstNumber, secondNumber);
+        break;
+    case "*":
+        result = mul(firstNumber, secondNumber);
+        break;
+    case "/":
+        result = div(firstNumber, secondNumber);
+        break;
+    default:
+        document.write("<p><b style='color:red'>" + signs + "</b> - не является знаком арифметической операции.</p>");
+}
+
+if (result != undefined) {
+    document.write("Результат операции: " + result);
+} else {
+    console.log("Error");
+}
+
+
+---------------------------------------------------------------------------------------------------------
+    
+    
+2.	Создать функцию, возводящую число в степень, число и сама степень вводится пользователем
+		Проверить числа на корректность.
+    
+
+var number = +prompt('Введите число: ');
+var degree = +prompt('Введите степень: ');
+var result;
+
+if (isNaN(number) || isNaN(degree)){
+    alert('Error');
+}
+
+function calculationNumbers(a, b){
+
+    var result = Math.pow(a, b);
+    return result;
+}
+
+var getNumber = calculationNumbers(number, degree);
+console.log(getNumber);   
+	
+  
+---------------------------------------------------------------------------------------------------------  
+  
+3.	Допишите функцию, которая определит, парное ли число (решение должно быть в одну строку).
+		Функция должна вернуть "Even" или "Odd";
+
+		function isEven(num) {
+			// your code here
+		}
+ 
+ function isEven(num) {
+	return ( num % 2 == 0) ? alert('Even') : alert('Odd');
+}
+
+var result = isEven(13);
+console.log(result);
+
+
+	
+------------------------------------------------------------------------------------------------------  
+  
+4.	Напишите функцию, которая возвращает n-е число Фибоначчи.
+	  Число, которое должна вернуть функция вводит пользователь.
+		Для решения используйте цикл.
+
+		Пользователь ввел: 6
+		Ряд Фибоначчи: 1, 1, 2, 3, 5, 8, 13, ...
+		Функция должна вернуть: 8
+
+    
+    
+var number = +prompt('Введите число: ');
+
+function fib(num) {
+    return num <= 1 ? num : fib(num - 1) + fib(num - 2);  
+}
+
+console.log(fib(number));
+    
+    
+    
+------------------------------------------------------------------------------------------------------    
+    
+5.  Создать игру "Камень-Ножницы-Бумага".
+        Выбор компьютера определяется строкой:  
+		
+		var computerChoice = Math.random();
+		alert(computerChoice);
+		
+		let comp = getComputerChoice();
+		let user = getUserChoice();
+		function game(comp, user) {
+			
+		}
+
+    Math.random() выдает произвольное число в промежутке от 0 до 1, на основании этого можно построить принцип выбора решения компьютера.
+		Запросить у пользователя один из трех вариантов "Камень-Ножницы-Бумага"
+		Сравнить ответ пользователя и компьютера, определить кто выиграл (или ничья)
+		Спросить пользователя, хочет ли он повторить, если "да", запустить игру заново
+    
+    
+    
+var userChoice = prompt('Введите Камень, Ножницы или Бумага: ');
+var computerChoice = Math.random();
+
+if (computerChoice <= 0.33) {
+    computerChoice = 'Камень';
+} else if (computerChoice <= 0.67) {
+    computerChoice = 'Ножницы';
+} else {
+    computerChoice = 'Бумага';
+}
+    
+document.write('Ваш выбор: ' + userChoice + '</br>');
+document.write('Компютер выбрал: ' + computerChoice);
+
+var compare = function game(user, comp) {
+    if (user === comp){
+        return alert('Ничья!');
+    } 
+    if (user === 'Камень'){
+        if (comp === 'Ножницы'){
+            return alert('Камень выиграл!');
+        } else {
+            return alert('Бумага выиграли!');
+        }
+    }
+
+    if (user === 'Бумага'){
+        if (comp === 'Камень') {
+            return alert('Бумага выиграла!');
+        } else {
+            return alert('Ножницы выиграли!')
+        }
+    }
+
+    if (user === 'Ножницы'){
+        if (comp === 'Камень') {
+            return alert('Камень выиграл!');
+        } else {
+            return alert('Ножницы выиграли!');
+        }
+    }
+} 
+compare(userChoice,computerChoice);
