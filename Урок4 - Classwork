@@ -1,0 +1,226 @@
+1. Напишите функцию, которая принимает массив в качестве аргумента. 
+        Используя slice(), извлеките информацию из массива аргументов и верните новый массив, содержащий элементы «warm» и «sunny».
+
+        ['cold', 'rainy', 'warm', 'sunny', 'cool', 'thunderstorms']
+
+
+var array = ['cold', 'rainy', 'warm', 'sunny', 'cool', 'thunderstorms'];
+
+function getArray(array) {
+    console.log(array);
+
+    return array.slice(2, -2);
+}
+
+console.log(getArray(array));
+----------------------------------------------------------------------------------------------------
+
+        2. Напишите функцию подсчета градусов Фаренгейта при входящем параметре температуры в цельсиях.
+        Алгоритм пересчета из градусов Цельсия в градусы Фаренгейта - это температура в градусах Цельсия, умноженная на 9/5 плюс 32.
+        
+        
+function getTempture(a){
+    var result = a * (9 / 5) + 32;
+    return result;
+}
+
+console.log(getTempture(30));
+
+----------------------------------------------------------------------------------------------------
+
+        3. Напишите функцию которая бы переворачивала предоставленную строку
+        Возможно, вам придется превратить строку в массив, прежде чем вы можете обратить его. 
+        Ваш результат должен быть строкой.
+        "something"
+
+		"test" => "tset"
+
+var text = 'test';
+
+function showLetters(a){
+    var list = a.split('');
+    console.log(list);
+    
+    var change = list.reverse();
+    console.log(change);
+
+    return change.join('');
+    
+}
+console.log(showLetters(text));
+
+
+----------------------------------------------------------------------------------------------------
+
+        4. Напишите функцию которая возвращает длину самого длинного слова в предложении. 
+        Ваш ответ должен быть числом.
+        "The quick brown fox jumped over the lazy dog" => 6
+
+
+
+var string = "The quick brown fox jumped over the lazy dog";
+
+function getNumber(str) {
+    var newArray = str.split(' ');
+    var longest = 0;
+
+    for(var i = 0; i < newArray.length; i++){
+        if(newArray[i].length > longest) { 
+            longest = newArray[i].length;
+        } 
+    }
+    return longest;
+}
+console.log(getNumber(string));
+
+
+---------------------------------------------------------------------------------------------------
+		
+		5.	Напишите функцию, которая сгенерирует массив рандомных чисел (на 10 элементов) от -10 до 10
+			Выведите массив в консоль
+			Посчитайте сумму позитивных чисел из массива и выведите ее в консоль
+
+function getRandomNumbers(min, max){
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function showPositiveNumber(){
+    var list = [];
+
+    for (var i = 0; i < 10; i++){
+        var randomNumbers = getRandomNumbers(-10, 10);
+        list.push(randomNumbers);
+    }
+    console.log(list);
+
+    var sum = 0;
+    for (var j = 0; j < 10; j++){
+        if (list[j] > 0) {
+            sum += list[j];
+        }
+    }
+    console.log(sum);
+}
+
+showPositiveNumber();
+
+---------------------------------------------------------------------------------------------------
+
+		6.	Напишите функцию, которая сгенерирует массив рандомных чисел (кол-во элементов в массиве вводит пользователь) от -10 до 10
+			Определите наименьшее и наибольшее число в массиве.
+			Массив, минимальное и максимальное число - вывести в консоль.
+
+
+function getRandomNumbers(min, max){
+    return Math.floor(Math.random() * (max - min) + min);
+}
+
+function showPositiveNumber(){
+    var list = [];
+    var ask = +prompt('Введите количество элементов: ');
+    for (var i = 0; i < ask; i++){
+        var randomNumbers = getRandomNumbers(-10, 10);
+        list.push(randomNumbers);
+    }
+    console.log(list);
+
+    const smallest_number = Math.min(...list);
+    const largest_number = Math.max(...list);
+
+    console.log('Smallest Value:', smallest_number);
+    console.log('Largest Value:', largest_number); 
+    
+}
+
+showPositiveNumber();
+---------------------------------------------------------------------------------------------------
+
+		7.	Напишите функцию, которая проверят, делится ли число на два других числа.
+			Сигнатура метода:
+			function isDivisible(num, x, y) {
+
+			}
+
+			num: 15
+			x: 3
+			y: 5
+
+			=> 
+
+			где num - проверяемое число,
+				х - первое число для проверки,
+				y - второе число для проверки
+
+			Если num делиться на оба числа без остачи - вывести true
+			Если num неделиться на оба числа - вывести "не делиться на х и у" (вместо х и у подставить соответствующие числа)
+			Если num неделиться на одно из числе - вывести "не делиться на х|y" (вместо х и у подставить соответствующие числа)
+
+
+function isDivisible(num, x, y) {
+    if (num % x == 0 && num % y == 0) {
+        console.log('True');
+    } else if (num % x != 0 && num % y != 0) {
+        console.log('Не делиться на', + x, 'и на', + y);
+    } else {
+        console.log('Не делиться на', + x, 'или на' + y);
+    }
+}
+
+isDivisible(15, 3, 5);
+--------------------------------------------------------------------------------------------------------------------
+
+		8.	Сумма в диапазоне
+		
+			Напишите 2 функции.
+			Первая функция генерирует массив на N рандомных чисел в диапазоне от A до B и возвращает его 
+			Т.е. принимает 3 параметра и А не может быть больше чем B
+			Например: doSmth(8, 1, 10) -> [3, 2, 5, 4, 7, 1, 3, 10]
+			
+			Вторая функция принимает массив рандомных чисел, индекс С которого начинать подсчет и индекс ПО который считать
+			Должна быть валидация индексов
+				- Чтобы не было отрицательных чисел
+				- Чтобы индекс не выходил за рамки допустимых индексов
+				- Чтобы первый индекс был меньше или равен второму
+			
+			Пример вывода в консоль:
+			Массив: [.....] сгенерированный от A до B
+			Сумма чисел в диапазоне от индекса C по индекс D равна: 10
+      
+      
+var a = 1;
+var b = 10;
+var num = 8;
+
+function randomNumber(n, a, b) {
+    var list = [];
+    for (var i = 0; i < n; i++){
+        if (a <= b) {
+            var number = Math.floor(Math.random() * (b - a) + a);
+        }
+        list.push(number);
+    }
+    console.log('Массив: ' + list + ' сгенерированный от A до B');
+    return list;
+}
+
+
+function calculateNumbers(arr, c, d){
+    if (c < 0 || d < 0 || c > d || c < a || d > b) {
+        console.log('Error');
+    } else {
+        var numSlice = arr.slice(c, d);
+        var sum = 0;
+        
+        console.log('Диапазон чисел: ' + numSlice);
+
+        for (var i = 0; i < numSlice.length; i++){
+            sum += numSlice[i];
+        }
+        console.log('Сумма чисел в диапазоне от индекса ' + c + ' по индекс ' + d + ' равна: ' + sum);
+    }
+    return sum;
+}
+
+
+var myArray = randomNumber(num, a, b);
+calculateNumbers(myArray, 2, 7);
