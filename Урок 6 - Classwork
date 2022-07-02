@@ -1,0 +1,224 @@
+1.	Часы. Напишите функцию, которая принимает на вход количeство часов, минут и секунд, и преобразует полученное время в миллисекунды.
+
+		Пример:
+		past(0, 1, 1) == 61000
+
+
+function getTime(hour, min, sec){
+    var s = Number(hour * 3600) + Number(min * 60) + Number(sec)
+    return s * 1000
+}
+
+var res = getTime(0, 1, 1);
+console.log(res);
+
+----------------------------------------------------------------------------------------------------------------------------------
+2. Каждое число в квадрат
+Напишите функцию, которая принимает число и возводит каждую цифру этого числа в квадрат.
+
+Пример:
+squareDigits(9119) //811181 так как 9^2 равно 81 и 1^2 равно 1.
+		
+
+function squareDigits(num){
+    var numStr = String(num);
+    console.log(numStr);
+
+    var change = numStr.split('');
+    console.log(change);  
+    
+    var arr = change.map((a) => {
+        return a ** 2;
+    } )
+    console.log(arr);
+
+    var newNum = arr.join('');
+    console.log(newNum);
+}
+
+var res = squareDigits(9119);
+console.log(res);
+
+--------------------------------------------------------------------------------------------------------------------------------
+3.Заменить все элементы
+Напишите функцию replaceAll, которая принимает первым параметром массив элементов, вторым параметром - элемент, который нужно заменить и третьим - 
+элемент, который должен заменить второй элемент.
+
+Пример: replaceAll(array: [1,2,2], old: 1, new: 2) // [2,2,2]
+		
+
+function replaceAll(arr, old, newN) {
+    let i = arr.indexOf(old);
+    if (i === -1){
+        alert('Error');
+        return;
+    }
+    
+    arr.splice(i, 1, newN);
+    console.log(arr);
+}
+
+var res = replaceAll([1,2,2], 1, 2); 
+console.log(res);
+
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+4.Напишите функцию, которая будет обрабатывать url, удаляя в нем всё после знака #
+
+			Примеры:
+
+			removeUrlAnchor('
+			// returns 'www.codewars.com'
+
+			// returns 'www.codewars.com?page=1' 
+			removeUrlAnchor('www.codewars.com?page=1')
+
+function removeUrlAnchor(url) {
+    var change = url.indexOf('#');
+	console.log(change);
+    
+	if (change === -1){
+		return url;
+	}
+
+	var newUrl = url.slice(0, change);
+	return newUrl;
+
+
+}
+
+var res = removeUrlAnchor('www.codewars.com#about');
+var res1 = removeUrlAnchor('www.codewars.com?page=1')
+console.log(res);
+console.log(res1);
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+5.У вас есть массив объектов user, и в каждом из них есть user.name. Напишите код, который преобразует их в массив имён..
+
+			let vasya = { name: "Вася", age: 25 };
+			let petya = { name: "Петя", age: 30 };
+			let masha = { name: "Маша", age: 28 };
+
+			let users = [ vasya, petya, masha ];
+
+			let names = // ваш код;
+
+			alert( names ); // Вася, Петя, Маша
+
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 28 };
+
+let users = [ vasya, petya, masha ];
+
+
+let names = users.map(item => {
+	return item.name;
+});
+
+alert(names);
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+6.У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
+Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName – состоит из name и surname.
+
+			let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+			let petya = { name: "Петя", surname: "Иванов", id: 2 };
+			let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+			let users = [ vasya, petya, masha ];
+
+			let usersMapped = /* ... ваш код ... */
+
+			/*
+			usersMapped = [
+			{ fullName: "Вася Пупкин", id: 1 },
+			{ fullName: "Петя Иванов", id: 2 },
+			{ fullName: "Маша Петрова", id: 3 }
+			]
+
+
+
+let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya = { name: "Петя", surname: "Иванов", id: 2 };
+let masha = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users = [ vasya, petya, masha ];
+
+
+var usersMapped = users.map(function (item) {
+    var point = new Object();
+
+    point.fullName = item.name + ' ' + item.surname;
+    point.id = item.id;
+
+    return point;
+})
+
+console.log(usersMapped);
+
+---------------------------------------------------------------------------------------------------------------------------
+
+7.	Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
+			Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
+
+			let vasya = { name: "Вася", age: 25 };
+			let petya = { name: "Петя", age: 30 };
+			let masha = { name: "Маша", age: 29 };
+
+			let arr = [ vasya, petya, masha ];
+
+			alert( getAverageAge(arr) ); // (25 + 30 + 29) / 3 = 28
+
+
+
+let vasya = { name: "Вася", age: 25 };
+let petya = { name: "Петя", age: 30 };
+let masha = { name: "Маша", age: 29 };
+
+let arr = [ vasya, petya, masha ];
+
+function getAverageAge(users) {
+
+    return users.reduce((a, b) => a + b.age, 0) / users.length;
+
+}
+
+var result = getAverageAge(arr);
+alert(result);
+
+---------------------------------------------------------------------------------------------------------------------------
+
+8.	Напишите функцию, которая принимает строку и удаляет в ней все дублирующиеся слова, оставляя тем самым только уникальные
+
+			Пример:
+
+			Input:
+			'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta'
+
+			Output:
+			'alpha beta gamma delta'
+
+
+var string = 'alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta';
+
+function showNew (str) {
+    var newStr = str.split(' ');
+    var newArray = [];
+
+    for (var i = 0; i < newStr.length; i++){
+        if (newArray.indexOf(newStr[i]) === -1){
+            newArray.push(newStr[i]);
+        }
+    }
+
+    return newArray = newArray.join(', ');
+    
+}
+
+var result = showNew(string);
+console.log(result);
