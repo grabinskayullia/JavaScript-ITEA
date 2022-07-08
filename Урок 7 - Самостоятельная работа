@@ -20,27 +20,27 @@
 // ВАРИАНТ 1
 var a = +prompt('Введите первое число: ');
 var b = +prompt('Введите второе число: ');
-var num = +prompt('Введите длину масива: ');
 
 
 function getRandom (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
 function getArray(a, b, num) {
     var list = [];
-    if (a < b) {
-        for (var i = 0; i < num; i++){
+    for (var i = 0; i < num; i++){
+        if (a < b){
             var randomNum = getRandom(a, b);
             list.push(randomNum);
+        } else{
+            console.log('Первый елемент не может быть больше второго!');
         }
-        return list;
-    } else {
-        console.log('Первый елемент не может быть больше второго!');
     }
+    return list;
 }
-
+console.log(getArray(a, b, 10))
+  
 
 var c = +prompt('Введите какой первый индекс: ');
 var d = +prompt('Введите по какой индекс: ');
@@ -64,7 +64,7 @@ function getSum (start, end, numbers) {
 
 
 function task() {
-    var firstPart = getArray(a, b, num);
+    var firstPart = getArray(a, b, 10);
 
     if (firstPart === undefined) {
         alert('there no valid array, please, review doSmth call ');
@@ -81,7 +81,6 @@ function task() {
 }
 
 console.log(task());
-
 
 
 
