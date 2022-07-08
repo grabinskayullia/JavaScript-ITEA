@@ -1,0 +1,113 @@
+Сумма в диапазоне
+		
+			Напишите 2 функции.
+			Первая функция генерирует массив на N рандомных чисел в диапазоне от {A} до {B} и возвращает его 
+			Т.е. принимает 3 параметра и {A} не может быть больше чем {B}
+            пераметры {A} и {B} запросить у пользователя
+			Например: doSmth(8, 1, 10) -> [3, 2, 5, 4, 7, 1, 3, 10]
+			
+			Вторая функция принимает массив рандомных чисел, индекс {С} c которого начинать подсчет и индекс {D} ПО который считать
+            индексы {С} и {D} запросить у пользователя
+			Должна быть валидация индексов
+				- Чтобы не было отрицательных чисел
+				- Чтобы индекс не выходил за рамки допустимых индексов
+				- Чтобы первый индекс был меньше или равен второму
+			
+			Пример вывода в консоль:
+			Массив: [.....] сгенерированный от {A} до {B}
+			Сумма чисел в диапазоне от индекса {С} по индекс {D} равна: 10 
+
+// ВАРИАНТ 1
+function getRandom (min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+function getArray(a, b, num) {
+    var list = [];
+    if (a < b) {
+        for (var i = 0; i < num; i++){
+            var randomNum = getRandom(a, b);
+            list.push(randomNum);
+        }
+        return list;
+    } else {
+        console.log('Первый елемент не может быть больше второго!');
+    }
+}
+
+
+function getSum (start, end, numbers) {
+    if (start < 0 || end < 0){
+        console.log('Индекс не может быть ниже нуля!');
+    } 
+    if (end >= numbers.length) {
+        console.log('Первый индекс не может быть больше чем второй!');
+    } 
+    if (start > end){
+        console.log('Индекс не может выходить за предели допустимых индексов');
+    } 
+    var sum = 0;
+    for (var j = start; j < end ; j++){
+        sum = sum + numbers[j];
+    }
+    return sum;
+}
+
+
+
+function task() {
+    var firstPart = getArray(1, 10, 5);
+
+    if (firstPart === undefined) {
+        alert('there no valid array, please, review doSmth call ');
+        return;
+    }
+    
+    var result = getSum(0, 4, firstPart);
+    if (result === undefined) {
+        alert('there no valid array, please, review doSmth call ');
+        return;
+    }
+
+    alert('Сумма чисел: ' + result);
+}
+
+console.log(task());
+
+
+
+
+
+// ВАРИАНТ 2 (Чи буде він теж правильний?)
+function randomNumber(n, a, b) {
+    var list = [];
+    for (var i = 0; i < n; i++){
+        if (a <= b) {
+            var number = Math.floor(Math.random() * (b - a) + a);
+        }
+        list.push(number);
+    }
+    console.log('Массив: ' + list + ' сгенерированный от A до B');
+    return list;
+}
+
+
+function calculateNumbers(arr, c, d){
+    if (c < 0 || d < 0 || c > d) {
+        console.log('Error');
+    } else {
+        var numSlice = arr.slice(c, d);
+        var sum = 0;
+
+        for (var i = 0; i < numSlice.length; i++){
+            sum += numSlice[i];
+        }
+        console.log('Сумма чисел в диапазоне от индекса ' + c + ' по индекс ' + d + ' равна: ' + sum);
+    }
+    return sum;
+}
+
+
+var myArray = randomNumber(10, 1, 9);
+calculateNumbers(myArray, 2, 7);
