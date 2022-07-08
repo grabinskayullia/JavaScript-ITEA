@@ -18,6 +18,11 @@
 			Сумма чисел в диапазоне от индекса {С} по индекс {D} равна: 10 
 
 // ВАРИАНТ 1
+var a = +prompt('Введите первое число: ');
+var b = +prompt('Введите второе число: ');
+var num = +prompt('Введите длину масива: ');
+
+
 function getRandom (min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -37,6 +42,9 @@ function getArray(a, b, num) {
 }
 
 
+var c = +prompt('Введите какой первый индекс: ');
+var d = +prompt('Введите по какой индекс: ');
+
 function getSum (start, end, numbers) {
     if (start < 0 || end < 0){
         console.log('Индекс не может быть ниже нуля!');
@@ -55,16 +63,15 @@ function getSum (start, end, numbers) {
 }
 
 
-
 function task() {
-    var firstPart = getArray(1, 10, 5);
+    var firstPart = getArray(a, b, num);
 
     if (firstPart === undefined) {
         alert('there no valid array, please, review doSmth call ');
         return;
     }
     
-    var result = getSum(0, 4, firstPart);
+    var result = getSum(c, d, firstPart);
     if (result === undefined) {
         alert('there no valid array, please, review doSmth call ');
         return;
@@ -80,6 +87,11 @@ console.log(task());
 
 
 // ВАРИАНТ 2 (Чи буде він теж правильний?)
+var a = +prompt('Введите первое число: ');
+var b = +prompt('Введите второе число: ');
+var num = +prompt('Введите длину масива: ');
+
+
 function randomNumber(n, a, b) {
     var list = [];
     for (var i = 0; i < n; i++){
@@ -91,6 +103,10 @@ function randomNumber(n, a, b) {
     console.log('Массив: ' + list + ' сгенерированный от A до B');
     return list;
 }
+
+
+var c = +prompt('Введите какой первый индекс: ');
+var d = +prompt('Введите по какой индекс: ');
 
 
 function calculateNumbers(arr, c, d){
@@ -109,5 +125,5 @@ function calculateNumbers(arr, c, d){
 }
 
 
-var myArray = randomNumber(10, 1, 9);
-calculateNumbers(myArray, 2, 7);
+var myArray = randomNumber(num, a, b);
+calculateNumbers(myArray, c, d);
